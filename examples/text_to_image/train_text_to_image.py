@@ -577,7 +577,8 @@ def main():
         )
 
     unet = UNet2DConditionModel.from_pretrained(
-        args.pretrained_model_name_or_path, subfolder="unet", revision=args.non_ema_revision
+        args.pretrained_model_name_or_path, subfolder="unet", revision=args.non_ema_revision,**{"encoder_hid_dim":512,"low_cpu_mem_usage":False,
+        "device_map":None}
     )
 
     # Freeze vae and text_encoder
