@@ -768,10 +768,11 @@ def main():
                 truncation=True,
                 return_tensors="pt"
             )
-        except OverflowError:
-            print(f"OverflowError occurred during tokenization.\n"
+        except Exception as e:
+            print(f"{e} occurred during tokenization.\n"
                   f"YOUR_TEXT = {captions}\n"
                   f"Length of YOUR_TEXT = {len(captions),len(captions[0])}")
+
             raise
 
         return inputs.input_ids
