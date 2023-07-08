@@ -403,7 +403,11 @@ class ConfigMixin:
             commit_hash = extract_commit_hash(config_file)
         except (json.JSONDecodeError, UnicodeDecodeError):
             raise EnvironmentError(f"It looks like the config file at '{config_file}' is not a valid JSON file.")
-
+        if "encoder_hid_dim" in config_dict and "encoder_hid_dim" in kwargs:
+            config_dict["encoder_hid_dim"]=kwargs['encoder_hid_dim']
+            print("encoder_hid_dim is changed to ",kwargs['encoder_hid_dim'])
+        else:
+            print("encoder_hid_dim is not changed")
         if not (return_unused_kwargs or return_commit_hash):
             return config_dict
 
