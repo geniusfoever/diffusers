@@ -757,6 +757,7 @@ def main():
                 raise ValueError(
                     f"Caption column `{caption_column}` should contain either strings or lists of strings."
                 )
+        print(tokenizer.model_max_length)
         print(type(captions))
         print(captions)
 
