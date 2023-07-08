@@ -757,24 +757,12 @@ def main():
                 raise ValueError(
                     f"Caption column `{caption_column}` should contain either strings or lists of strings."
                 )
-        # inputs = tokenizer(
-        #     captions, max_length=tokenizer.model_max_length, padding="max_length", truncation=True, return_tensors="pt"
-        # )
-        try:
-            inputs = tokenizer(
-                captions,
-                tokenizer.model_max_length,
-                padding="max_length",
-                truncation=True,
-                return_tensors="pt"
-            )
-        except Exception as e:
-            print(f"{e} occurred during tokenization.\n"
-                  f"YOUR_TEXT = {captions}\n"
-                  f"Length of YOUR_TEXT = {len(captions),len(captions[0])}")
+        print(type(captions))
+        print(captions)
 
-            raise
-
+        inputs = tokenizer(
+            captions, max_length=tokenizer.model_max_length, padding="max_length", truncation=True, return_tensors="pt"
+        )
         return inputs.input_ids
 
     # Preprocessing the datasets.
