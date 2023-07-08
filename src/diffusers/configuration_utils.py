@@ -407,7 +407,8 @@ class ConfigMixin:
             config_dict["encoder_hid_dim"]=kwargs['encoder_hid_dim']
             print("encoder_hid_dim is changed to ",kwargs['encoder_hid_dim'])
         else:
-            print("encoder_hid_dim is not changed")
+            print("encoder_hid_dim is set to 512")
+            config_dict["encoder_hid_dim"]=512
         if not (return_unused_kwargs or return_commit_hash):
             return config_dict
 
