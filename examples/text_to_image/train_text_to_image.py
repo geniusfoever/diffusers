@@ -587,7 +587,8 @@ def main():
     # Create EMA for the unet.
     if args.use_ema:
         ema_unet = UNet2DConditionModel.from_pretrained(
-            args.pretrained_model_name_or_path, subfolder="unet", revision=args.revision,**{"encoder_hid_dim":512}
+            args.pretrained_model_name_or_path, subfolder="unet", revision=args.revision,**{"encoder_hid_dim":512,"low_cpu_mem_usage":False,
+        "device_map":None}
         )
         ema_unet = EMAModel(ema_unet.parameters(), model_cls=UNet2DConditionModel, model_config=ema_unet.config)
 
