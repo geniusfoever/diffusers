@@ -654,7 +654,8 @@ def main():
                 model = models.pop()
 
                 # load diffusers style into model
-                load_model = UNet2DConditionModel.from_pretrained(input_dir, subfolder="unet")
+                load_model = UNet2DConditionModel.from_pretrained(input_dir, subfolder="unet",**{"encoder_hid_dim":512,"low_cpu_mem_usage":False,
+        "device_map":None})
                 model.register_to_config(**load_model.config)
 
                 model.load_state_dict(load_model.state_dict())
