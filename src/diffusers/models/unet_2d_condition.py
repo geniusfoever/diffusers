@@ -822,7 +822,8 @@ class UNet2DConditionModel(ModelMixin, ConfigMixin, UNet2DConditionLoadersMixin)
                 print(f"Shape of encoder_hidden_states: {encoder_hidden_states.shape}")
                 if attention_mask is not None:
                     print(f"Shape of attention_mask: {attention_mask.shape}")
-                print(f"Shape of encoder_attention_mask: {encoder_attention_mask.shape}")
+                if encoder_attention_mask is not None:
+                    print(f"Shape of encoder_attention_mask: {encoder_attention_mask.shape}")
                 print(f"Shape of emb: {emb.shape}")
                 print(f"Shape of sample: {sample.shape}")
 
